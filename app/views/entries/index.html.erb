@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Resume</title>
+  </head>
+  <body>
+    <label>Resume Entries</label>
+    <ul>
+      <% @entries.each do |entry| %>
+      <li><b><%= entry.job_title %></b></li>
+      <li><%= entry.start_date %></li>
+      <li><%= entry.end_date %></li>
+      <li><%= entry.description %></li>
+      <% end %>
+    </ul>
+  </body>
+</html>
