@@ -1,0 +1,2 @@
+class ResumeEntriesController < ApplicationController
+end
