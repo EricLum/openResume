@@ -5,7 +5,12 @@
     <title> Resume Entries</title>
   </head>
   <body>
-    
+        <h4><%= @entry.job_title %></h4>
+    <ul>
+      <li><<%= @entry.start_date %></li>
+      <li><<%= @entry.end_date %></li>
+      <li><<%= @entry.description %></li>
+    </ul>
 
   </body>
 </html>
