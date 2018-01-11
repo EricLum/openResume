@@ -3,11 +3,12 @@
     <%= err %>
   <% end %>
 <% end %>
+<h1>Add Job to Resume</h1>
 <%= form_for @resume_entry do |f| %>
 <%= f.label "Select a resume" %><br>
 <%= f.collection_select :resume_id, Resume.all, :id, :title %><br>
 
 <%= f.label "Choose Associated Jobs" %><br>
 <%= f.collection_select :entry_id, Entry.all, :id, :job_title %>
-<%= f.submit %>
+<%= f.submit 'Add Job to Resume'%>
 <% end %>

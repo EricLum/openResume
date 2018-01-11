@@ -5,9 +5,8 @@
     <title>Resume</title>
   </head>
   <body>
-    <% @resumes.each do |resume| %>
-    <h1><%= resume.title %></h1>
-    <% end %>
-
+      <% @resumes.each do |resume| %>
+      <h3><%= link_to resume.title, resume %></h3><br>
+      <% end %>
   </body>
 </html>

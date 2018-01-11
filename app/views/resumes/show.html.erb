@@ -1,8 +1,14 @@
 <h1><%= @resume.title %></h1>
-<ul>
+
+<ol>
   <% @resume.entries.each do |e| %>
-    <li><b><%= e.job_title %></b></li>
-    <li>Start: <%= e.start_date %> | End : <%= e.end_date %></li>
-    <li><%= e.description %></li>
+
+    <li><b><%=link_to e.job_title, e %></b></li>
+    <ul>
+      <li>Start: <%= e.start_date %> | End : <%= e.end_date %></li>
+      <li><%= e.description %></li>
+    </ul>
+
   <% end %>
-</ul>
+
+</ol>

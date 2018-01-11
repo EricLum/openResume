@@ -5,12 +5,16 @@ class ResumeEntriesController < ApplicationController
   end
 
   def create
+    @prev_entry = ResumeEntry.all.find_by(resume_entries_params)
     @resume_entry = ResumeEntry.new(resume_entries_params)
-    if @resume_entry.valid?
+    if @resume_entry.valid? && !@prev_entry
       @resume_entry.save
       redirect_to @resume_entry.resume
     else
       flash[:error] = @resume_entry.errors.full_messages
+      if @prev_entry
+        flash[:error] << "Entry already exists on resume"
+      end
       redirect_to new_resume_entry_path
     end
   end
