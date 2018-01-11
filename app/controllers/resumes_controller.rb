@@ -10,6 +10,7 @@ class ResumesController < ApplicationController
 
   def show
     @resume = Resume.find(params[:id])
+    @resume_entries = ResumeEntry.all.find_by(resume_id: @resume.id).entry
   end
 
   def create
@@ -46,7 +47,7 @@ class ResumesController < ApplicationController
   private
 
   def resume_params
-    params.require(:resume).permit(:title, :user_id)
+    params.require(:resume).permit(:title, :user_id, entry_ids: [])
   end
 
 end

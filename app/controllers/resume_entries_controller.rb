@@ -1,11 +1,18 @@
 class ResumeEntriesController < ApplicationController
 
   def new
-    @resume_entries = ResumeEntryn.new
+    @resume_entry = ResumeEntry.new
   end
 
   def create
-    @resume_entry = Resume.new
+    @resume_entry = ResumeEntry.new(resume_entries_params)
+    if @resume_entry.valid?
+      @resume_entry.save
+      redirect_to @resume_entry.resume
+    else
+      flash[:error] = @resume_entry.errors.full_messages
+      redirect_to new_resume_entry_path
+    end
   end
 
   def update
@@ -20,7 +27,7 @@ class ResumeEntriesController < ApplicationController
   end
 
   def destroy
-    
+
   end
 
   private

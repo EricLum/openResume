@@ -1,0 +1,13 @@
+<% if flash[:error] %>
+  <% flash[:error].each do |err| %>
+    <%= err %>
+  <% end %>
+<% end %>
+<%= form_for @resume_entry do |f| %>
+<%= f.label "Select a resume" %><br>
+<%= f.collection_select :resume_id, Resume.all, :id, :title %><br>
+
+<%= f.label "Choose Associated Jobs" %><br>
+<%= f.collection_select :entry_id, Entry.all, :id, :job_title %>
+<%= f.submit %>
+<% end %>

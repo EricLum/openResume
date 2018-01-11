@@ -1,1 +1,18 @@
-<%= render 'form' %>
+<% if flash[:error] %>
+  <% flash[:error].each do |err| %>
+    <%= err %>
+  <% end %>
+<% end %>
+
+<%= form_for @resume do |f| %>
+<%= f.label :user_id %>
+<%= f.number_field :user_id %>
+
+<%= f.label :title %>
+<%= f.text_field :title %>
+
+<%= f.label "Choose Associated Jobs" %><br>
+<%= f.collection_check_boxes :entry_ids, Entry.all, :id, :job_title %>
+<%= f.submit %>
+
+<% end %>

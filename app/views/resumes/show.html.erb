@@ -1,2 +1,8 @@
 <h1><%= @resume.title %></h1>
-<%= link_to 'Add to resume',  %>
+<ul>
+  <% @resume.entries.each do |e| %>
+    <li><b><%= e.job_title %></b></li>
+    <li>Start: <%= e.start_date %> | End : <%= e.end_date %></li>
+    <li><%= e.description %></li>
+  <% end %>
+</ul>
